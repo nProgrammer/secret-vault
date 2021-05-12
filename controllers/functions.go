@@ -20,6 +20,8 @@ func Close(path string, name *string, pass *string) {
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	cmd.Run()
+	cmd = exec.Command("rm", "-r", *name)
+	cmd.Run()
 	cmd = exec.Command("mv", *name+".zip", path+"/.saves/")
 	cmd.Run()
 }
